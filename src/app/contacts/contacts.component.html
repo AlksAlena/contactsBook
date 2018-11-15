@@ -1,0 +1,48 @@
+<mat-form-field>
+  <input matInput 
+    placeholder="Name"
+    #searchField 
+    (input)="search(searchField.value)">
+</mat-form-field>
+
+<ng-container *ngIf="searchField.value; then searchSection; else contactsSection"></ng-container>
+  
+  <ng-template #contactsSection>
+    <mat-list role="list" class="list">
+      <h3 mat-subheader>Contacts</h3>
+      <mat-list-item *ngFor="let contact of contacts; let i = index;" 
+        class="list__item" role="listitem">
+        <a routerLink='/contactdetails/{{contact.id}}/info'>
+          <img class="item__icon" 
+            src="{{contact.avatar}}" 
+            alt="{{contact.name}}" 
+            height="50px">
+          <p class="item__title"><span>{{contact.name}}</span></p> 
+        </a>
+        <button mat-icon-button routerLink='/contactdetails/{{contact.id}}/edit'>
+          <mat-icon aria-label="Edit info about this contact">edit</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </ng-template>
+
+  <ng-template #searchSection>
+    <ng-container *ngIf="(searchContacts$ | async) as contacts">
+      <mat-list role="list" class="list">
+        <h3 mat-subheader>Contacts</h3>
+        <mat-list-item *ngFor="let contact of contacts; let i = index;" 
+          class="list__item" role="listitem">
+          <a routerLink='/contactdetails/{{contact.id}}/info'>
+            <img class="item__icon" 
+              src="{{contact.avatar}}" 
+              alt="{{contact.name}}" 
+              height="50px">
+            <p class="item__title"><span>{{contact.name}}</span></p> 
+          </a>
+          <button mat-icon-button routerLink='/contactdetails/{{contact.id}}/edit'>
+            <mat-icon aria-label="Edit info about this contact">edit</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </ng-container>
+  </ng-template>

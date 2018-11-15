@@ -1,0 +1,44 @@
+.list {
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px solid #eee;
+  list-style: none;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.list__item {  
+  margin: 3px;
+  display: flex;
+}
+.list__item a {
+  text-decoration: none; 
+  display: flex;
+  border-radius: 5px;
+  color: purple;
+  flex: 1;
+}
+.list__item a:hover {
+  box-shadow: 2px 2px 5px 0 rgba(0,0,0,.5);
+}
+.item__icon {
+  border-radius: 5px 0 0 5px;
+}
+.item__title {
+  padding: 10px;
+  margin: 0;
+  flex: 1;
+  background-color: #eee;
+  color: darkblue;
+  display: flex;
+}
+.item__title span {
+  margin: auto;
+}
+button {
+  color: #eee;
+  background: purple;
+  border-radius: 0 5px 5px 0;
+  margin-left: auto;
+  height: 50px;
+}
